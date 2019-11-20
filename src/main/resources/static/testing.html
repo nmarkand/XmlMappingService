@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="ISO-8859-1"/>
+    <title>XmlMapping-Tests</title>
+    <script type="text/javascript" src="js/jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>
+    
+    <script type="text/javascript" src="js/xml_mapping/xmlMappingUtil.js"></script>
+    <script type="text/javascript" src="js/xml_mapping/xmlMappingTesting.js"></script>
+    
+    <style>
+    table, th, td {
+      border: 1px solid black;
+    }
+	.collayout_row {
+	  display: flex;
+	}
+	.collayout_2col {
+	  flex: 33%;
+	}  
+	.collayout_3col {
+	  flex: 33%;
+	}
+	.collayout_4col {
+	  flex: 33%;
+	}    
+    </style>
+    
+  </head>
+  <body>
+     <div class="collayout_row">
+	     <div class="collayout_2col">
+	       <h3>Template</h3>
+	       <table>
+			    <tr>
+			      <th>Vendor</th>
+			      <th>Source</th>
+			      <th>Target</th>				     
+			    </tr>
+			    <tr>
+			      <th><input id="inp_template_vendor"></th>			     			   
+			      <th><input id="inp_template_source"></th>			     			   
+			      <th><input id="inp_template_target"></th>			     
+			    </tr>
+		   </table>	
+	       <button id="btn_tests_run" onclick="xmlMappingTesting.actionRunForTemplate()">Run</button>
+	       Ignore Whitespace <input id="cb_ignore_whitespace" type="checkbox" checked="true">
+	     </div>
+	     <div class="collayout_2col">
+	       <h3>Result</h3>
+	       Tests run: <span id="txt_results_total"/><br/>
+		  <table id="table_results">
+		    <tr>
+		      <th>Id</th>
+		      <th>Result</th>
+		      <th>Run</th>
+		      <th>Delete</th>
+		    </tr>
+		  </table>       
+	     </div>
+     </div>     
+     <div>
+     	<h3>Test</h3>
+     	<div>Id: <span id="txt_test_result_id">0</span> : <span id="txt_test_result_outcome">NOTRUN</span></div>
+     	
+     	<div class="collayout_row">
+	     	<div class="collayout_4col">
+	     	    Source</br>
+	     		<textarea id="txt_test_source" rows="40" cols="65" spellcheck="false"></textarea>
+	     	</div>
+	 	    <div class="collayout_4col">
+  		     	Expect</br>
+	     		<textarea id="txt_test_target" rows="40" cols="65" spellcheck="false"></textarea>
+	     	</div>
+           <div class="collayout_4col">
+		     	Result</br>
+	     		<textarea id="txt_test_result_transformed" rows="40" cols="65" spellcheck="false"></textarea>
+	     	</div>
+           <div class="collayout_4col">
+		     	Diffs
+		     	<div style="max-height:600px;max-width: 450px;overflow:auto;font-family: monospace;" >
+		     	   <ul id="ul_test_result_diffs"></ul>
+		     	</div>
+	     	</div>	     	
+     	</div>
+        <button id="btn_new_test" onclick="xmlMappingTesting.actionSaveTest()">Save</button>
+        <button id="btn_clear_test" onclick="xmlMappingTesting.actionClearTest()">Clear</button>
+     </div>
+    <script type="text/javascript">
+		$(document).ready(function() {
+		    xmlMappingTesting.init();
+		});
+	</script>     
+  </body>
+</html>

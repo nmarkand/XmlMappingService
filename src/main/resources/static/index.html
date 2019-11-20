@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="ISO-8859-1"/>
+    <title>XmlMapping</title>
+    <script type="text/javascript" src="js/jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="js/xml_mapping/xmlMappingUtil.js"></script>
+    <script type="text/javascript" src="js/xml_mapping/xmlMapping.js"></script>
+    
+    <style>
+    table, th, td {
+      border: 1px solid black;
+    }
+	.collayout_row {
+	  display: flex;
+	}
+	
+	.collayout_col {
+	  flex: 50%;
+	}    
+    </style>
+    
+  </head>
+  <body>
+    <div class="collayout_row">  
+	    <div class="collayout_col">
+			<div>
+			<div>
+		        <h3>Search</h3>
+		        <table id="table_search_templates">
+			    <tr>
+			      <th>Vendor</th>
+			      <th>Source</th>
+			      <th>Target</th>				     
+			    </tr>
+			    <tr>
+			      <th><input id="inp_vendor_id"></th>			     			   
+			      <th><input id="inp_source_type"></th>			     			   
+			      <th><input id="inp_target_type"></th>			     
+			    </tr>
+			  </table>	
+		        <button id="btn_search_template">Search</button>
+		        <input id="btn_reset_page" type="reset" value="Reset">
+		        <button id="btn_new_template">New</button>
+		        <button id="btn_export_template">Export</button>
+		        Import:
+		        <input id="inp_import_template" type="file" accept="application/json">  
+				<button id="btn_import_template">Import</button>
+		     </div>
+		     </br>
+		     </br>	   
+		     <div id="div_template_list">
+			  <h3>Templates</h3>		     
+			  <table id="table_templates">
+			    <tr>
+			      <th>Vendor</th>
+			      <th>Source</th>
+			      <th>Target</th>
+			      <th>Edit</th>
+			    </tr>
+			  </table>
+			  </div>			  
+			  </div>
+			  <div id="div_template_content">
+			    <h3>Content</h3>
+			    <textarea id="txt_template_content"rows="30" cols="100" spellcheck="false"></textarea>
+			    <div>
+		        	<button id="btn_save_template">Save</button>
+		        	<button id="btn_delete_template">Delete</button>
+		        	<button id="btn_template_versions">Versions</button>
+		        	<select id="select_template_versions" style="display:none;"></select>
+		        	<button id="btn_test_template">Tests</button>
+		        </div>
+		      </div>
+	      </div>
+	      <div class="collayout_col">
+		      <div>
+		        <h3>Transform</h3>
+			    <textarea id="txt_source_content"rows="25" cols="100" spellcheck="false"></textarea><br/>
+		         <button id="btn_transform">Transform</button>	            
+		      </div>
+		      <div>
+		        <h3>Result</h3>
+			    <textarea id="txt_transformed_content"rows="25" cols="100" spellcheck="false"></textarea><br/>
+		      </div>
+	      </div>  
+    </div>
+    
+    <script type="text/javascript">
+		$(document).ready(function() {
+		    xmlMapping.init();
+		});
+	</script>     
+  </body>
+</html>
